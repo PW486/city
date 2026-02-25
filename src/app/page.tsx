@@ -38,7 +38,7 @@ export default function Home() {
           </div>
           <h1 
             className="text-3xl font-black text-slate-900 sm:text-4xl mb-4 tracking-tight cursor-pointer hover:opacity-80 transition-opacity"
-            onClick={() => window.location.href = '/'}
+            onClick={() => window.location.href = '/city'}
           >
             WHERE SHOULD <span className="text-emerald-600">I LIVE?</span>
           </h1>
