@@ -1,31 +1,32 @@
 # CityMatch (City Explorer)
 
-전 세계 주요 도시들의 거주 비용, 안전도, 외국인 친화도 점수를 비교하고 검색할 수 있는 서비스입니다.
+A web-based platform to compare and explore major cities worldwide based on cost of living, safety, and expat-friendliness.
 
-## 주요 기능
-- 🌍 **전 세계 도시 데이터 조회**: 주요 도시들의 다양한 점수(Total Score, Rent, Safety, Expat)를 제공합니다.
-- 🔍 **실시간 검색**: 도시 이름이나 국가명으로 간편하게 검색할 수 있습니다.
-- 📊 **데이터 정렬**: 종합 점수, 낮은 임대료, 높은 안전도, 외국인 친화도 등 원하는 기준으로 정렬할 수 있습니다.
-- 📱 **반응형 UI**: 데스크톱과 모바일 모두 최적화된 화면을 제공합니다.
+## Key Features
+- 🌍 **Global City Database**: Access scores for various metrics (Total Score, Rent, Safety, Expat) across major cities.
+- 🔍 **Real-time Search**: Easily find cities by name or country.
+- 📊 **Dynamic Sorting**: Sort cities by Total Score, lowest Rent, highest Safety, or Expat-friendliness.
+- 📱 **Responsive Design**: Optimized UI for both desktop and mobile devices.
 
-## 기술 스택
+## Tech Stack
 - **Framework**: Next.js 15+ (App Router)
 - **Styling**: Tailwind CSS
 - **Icons**: Lucide React
 - **Animations**: Framer Motion
 - **Deployment**: GitHub Pages
 
-## 개발 환경 실행
+## Getting Started
+To run the development server:
 ```bash
 npm install
 npm run dev
 ```
 
-## 데이터 업데이트
-`scripts/update-data.ts`를 통해 외부 소스에서 최신 도시 데이터를 가져올 수 있습니다.
+## Data Update
+Update the city data from external sources using the provided script:
 ```bash
 npm run update-data
 ```
 
 ---
-본 프로젝트는 **[pw486.github.io/city](https://pw486.github.io/city)** 에서 확인하실 수 있습니다.
+View the live project at **[pw486.github.io/city](https://pw486.github.io/city)**.
