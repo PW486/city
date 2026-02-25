@@ -1,4 +1,4 @@
-# CityMatch (City Explorer)
+# WHERE SHOULD I LIVE?
 
 A web-based platform to compare and explore major cities worldwide based on cost of living, safety, and expat-friendliness.
 
