@@ -39,6 +39,14 @@ export const metadata: Metadata = {
     description: "Discover your next city. Find the perfect place for your lifestyle.",
     url: baseUrl,
     siteName: "Global Living Index",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "WHERE SHOULD I LIVE? - Global Living Index",
+      },
+    ],
     locale: "en_US",
     type: "website",
   },
@@ -46,6 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "WHERE SHOULD I LIVE?",
     description: "Discover your next city. Find the perfect place for your lifestyle.",
+    images: ["/opengraph-image.png"],
   },
 };
 
