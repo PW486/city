@@ -1,4 +1,4 @@
-# WHERE SHOULD I LIVE?
+# 📍 WHERE SHOULD I LIVE?
 
 A web-based platform to compare and explore major cities worldwide based on cost of living, safety, and expat-friendliness.
 
@@ -20,12 +20,6 @@ To run the development server:
 ```bash
 npm install
 npm run dev
-```
-
-## Data Update
-Update the city data from external sources using the provided script:
-```bash
-npm run update-data
 ```
 
 ---
