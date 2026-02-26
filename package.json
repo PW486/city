@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "update-data": "npx tsx scripts/update-data.ts"
+    "lint": "eslint"
   },
   "dependencies": {
     "framer-motion": "^12.34.3",
