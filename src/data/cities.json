@@ -72,6 +72,18 @@
     "description": "A scenic coastal city with long sandy beaches and a rising tech scene."
   },
   {
+    "id": "6",
+    "name": "Fukuoka",
+    "slug": "fukuoka",
+    "country": "Japan",
+    "rentPrice1BR": 496,
+    "rentScore": 95.3,
+    "safetyIndex": 77.1,
+    "expatIndex": 72,
+    "totalScore": 81.5,
+    "description": "A relaxed port city known for its ramen stalls and friendly local vibe."
+  },
+  {
     "id": "11",
     "name": "Phuket",
     "slug": "phuket",
@@ -82,18 +94,6 @@
     "expatIndex": 85,
     "totalScore": 81.2,
     "description": "Thailand's largest island featuring emerald waters and luxury island life."
-  },
-  {
-    "id": "6",
-    "name": "Fukuoka",
-    "slug": "fukuoka",
-    "country": "Japan",
-    "rentPrice1BR": 564,
-    "rentScore": 93.7,
-    "safetyIndex": 77.1,
-    "expatIndex": 72,
-    "totalScore": 80.9,
-    "description": "A relaxed port city known for its ramen stalls and friendly local vibe."
   },
   {
     "id": "9",
@@ -108,18 +108,6 @@
     "description": "A high-energy city blending ornate shrines with a legendary street life."
   },
   {
-    "id": "4",
-    "name": "Osaka",
-    "slug": "osaka",
-    "country": "Japan",
-    "rentPrice1BR": 564,
-    "rentScore": 93.7,
-    "safetyIndex": 78.5,
-    "expatIndex": 70,
-    "totalScore": 80.7,
-    "description": "Known as Japan's kitchen, famous for its street food and lively atmosphere."
-  },
-  {
     "id": "60",
     "name": "Krakow",
     "slug": "krakow",
@@ -130,18 +118,6 @@
     "expatIndex": 78,
     "totalScore": 80.5,
     "description": "A well-preserved medieval city with a huge central market square."
-  },
-  {
-    "id": "5",
-    "name": "Kyoto",
-    "slug": "kyoto",
-    "country": "Japan",
-    "rentPrice1BR": 564,
-    "rentScore": 93.7,
-    "safetyIndex": 82.4,
-    "expatIndex": 65,
-    "totalScore": 80.4,
-    "description": "The cultural heart of Japan, preserved with thousands of temples and gardens."
   },
   {
     "id": "63",
@@ -156,16 +132,28 @@
     "description": "A design-focused capital known for its saunas and seaside charm."
   },
   {
-    "id": "17",
-    "name": "Bali",
-    "slug": "bali",
-    "country": "Indonesia",
-    "rentPrice1BR": 308,
-    "rentScore": 99.8,
-    "safetyIndex": 42.7,
-    "expatIndex": 97,
-    "totalScore": 79.8,
-    "description": "An island paradise for surfing, yoga, and a thriving nomad community."
+    "id": "4",
+    "name": "Osaka",
+    "slug": "osaka",
+    "country": "Japan",
+    "rentPrice1BR": 700,
+    "rentScore": 90.5,
+    "safetyIndex": 78.5,
+    "expatIndex": 70,
+    "totalScore": 79.7,
+    "description": "Known as Japan's kitchen, famous for its street food and lively atmosphere."
+  },
+  {
+    "id": "5",
+    "name": "Kyoto",
+    "slug": "kyoto",
+    "country": "Japan",
+    "rentPrice1BR": 660,
+    "rentScore": 91.4,
+    "safetyIndex": 82.4,
+    "expatIndex": 65,
+    "totalScore": 79.6,
+    "description": "The cultural heart of Japan, preserved with thousands of temples and gardens."
   },
   {
     "id": "20",
@@ -240,6 +228,18 @@
     "description": "The rapidly transforming political and financial hub of the Kingdom."
   },
   {
+    "id": "17",
+    "name": "Bali",
+    "slug": "bali",
+    "country": "Indonesia",
+    "rentPrice1BR": 496,
+    "rentScore": 95.3,
+    "safetyIndex": 42.7,
+    "expatIndex": 97,
+    "totalScore": 78.3,
+    "description": "An island paradise for surfing, yoga, and a thriving nomad community."
+  },
+  {
     "id": "1",
     "name": "Seoul",
     "slug": "seoul",
@@ -250,6 +250,18 @@
     "expatIndex": 75,
     "totalScore": 78.1,
     "description": "A high-tech megacity where ancient temples meet cutting-edge innovation."
+  },
+  {
+    "id": "2",
+    "name": "Busan",
+    "slug": "busan",
+    "country": "South Korea",
+    "rentPrice1BR": 540,
+    "rentScore": 94.3,
+    "safetyIndex": 75.1,
+    "expatIndex": 65,
+    "totalScore": 78.1,
+    "description": "A vibrant coastal city famous for its beautiful beaches and seafood markets."
   },
   {
     "id": "39",
@@ -264,18 +276,6 @@
     "description": "The capital of classical music, consistently ranked highest for quality of life."
   },
   {
-    "id": "7",
-    "name": "Nagoya",
-    "slug": "nagoya",
-    "country": "Japan",
-    "rentPrice1BR": 564,
-    "rentScore": 93.7,
-    "safetyIndex": 80.4,
-    "expatIndex": 60,
-    "totalScore": 78,
-    "description": "An industrial powerhouse with a rich history of samurai culture."
-  },
-  {
     "id": "96",
     "name": "Florianopolis",
     "slug": "florianopolis",
@@ -286,6 +286,18 @@
     "expatIndex": 85,
     "totalScore": 78,
     "description": "A beach lover's island paradise with a high quality of life."
+  },
+  {
+    "id": "7",
+    "name": "Nagoya",
+    "slug": "nagoya",
+    "country": "Japan",
+    "rentPrice1BR": 576,
+    "rentScore": 93.4,
+    "safetyIndex": 80.4,
+    "expatIndex": 60,
+    "totalScore": 77.9,
+    "description": "An industrial powerhouse with a rich history of samurai culture."
   },
   {
     "id": "99",
@@ -334,18 +346,6 @@
     "expatIndex": 75,
     "totalScore": 77.7,
     "description": "A resilient, modern capital rebuilt from its historic foundations."
-  },
-  {
-    "id": "2",
-    "name": "Busan",
-    "slug": "busan",
-    "country": "South Korea",
-    "rentPrice1BR": 604,
-    "rentScore": 92.8,
-    "safetyIndex": 75.1,
-    "expatIndex": 65,
-    "totalScore": 77.6,
-    "description": "A vibrant coastal city famous for its beautiful beaches and seafood markets."
   },
   {
     "id": "128",
