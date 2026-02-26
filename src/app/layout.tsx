@@ -14,7 +14,21 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "WHERE SHOULD I LIVE?",
-  description: "Discover your next home. Find the perfect city that fits your budget and lifestyle.",
+  description: "Discover your next city. Find the perfect place for your lifestyle based on rent, safety, and expat friendliness.",
+  keywords: ["city ranking", "relocation", "digital nomad", "best places to live", "global living index"],
+  authors: [{ name: "Global Living Index" }],
+  openGraph: {
+    title: "WHERE SHOULD I LIVE?",
+    description: "Discover your next city. Find the perfect place for your lifestyle.",
+    siteName: "Global Living Index",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "WHERE SHOULD I LIVE?",
+    description: "Discover your next city. Find the perfect place for your lifestyle.",
+  },
 };
 
 export default function RootLayout({
