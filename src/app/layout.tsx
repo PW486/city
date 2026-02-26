@@ -18,6 +18,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
+  viewportFit: "cover",
 };
 
 const baseUrl = "https://pw486.github.io/city/";
@@ -28,6 +29,11 @@ export const metadata: Metadata = {
   description: "Discover your next city. Find the perfect place for your lifestyle based on rent, safety, and expat friendliness.",
   keywords: ["city ranking", "relocation", "digital nomad", "best places to live", "global living index"],
   authors: [{ name: "Global Living Index" }],
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "WHERE SHOULD I LIVE?",
+  },
   openGraph: {
     title: "WHERE SHOULD I LIVE?",
     description: "Discover your next city. Find the perfect place for your lifestyle.",
