@@ -1,10 +1,11 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import Link from 'next/link'
 import citiesData from '@/data/cities.json'
 import { Shield, Users, Search, ListFilter, TrendingUp, Globe2, CreditCard, X } from 'lucide-react'
 
-// --- Types ---
+// --- Types & Constants ---
 
 type SortOption = 'total' | 'rent' | 'safety' | 'expat'
 
@@ -19,14 +20,16 @@ interface City {
   expatIndex: number
 }
 
-// --- Main Component ---
+const SORT_OPTIONS: SortOption[] = ['total', 'rent', 'safety', 'expat']
+
+// --- Main Page Component ---
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('')
   const [sortBy, setSortBy] = useState<SortOption>('total')
 
   const filteredAndSortedCities = useMemo(() => {
-    let result = (citiesData as City[]).filter(city => 
+    const result = (citiesData as City[]).filter(city => 
       city.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       city.country.toLowerCase().includes(searchQuery.toLowerCase())
     )
@@ -46,18 +49,17 @@ export default function Home() {
     <main className="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 pb-12 pt-[env(safe-area-inset-top)]">
       <div className="max-w-4xl mx-auto pt-8 sm:pt-16">
         
-        {/* Header Section */}
+        {/* Header: Global Living Index Title */}
         <header className="mb-8 text-center">
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-[10px] sm:text-[11px] font-bold mb-4 tracking-wider uppercase shadow-sm">
             <Globe2 className="w-3 h-3" />
             Global Living Index
           </div>
-          <h1 
-            className="text-[clamp(1.5rem,8vw,2.25rem)] sm:text-4xl font-black text-slate-900 mb-1 tracking-tighter whitespace-nowrap cursor-pointer hover:opacity-80 transition-opacity"
-            onClick={() => window.location.href = '/city'}
-          >
-            WHERE SHOULD <span className="text-emerald-600">I LIVE?</span>
-          </h1>
+          <Link href="/" className="block group">
+            <h1 className="text-[clamp(1.5rem,8vw,2.25rem)] sm:text-4xl font-black text-slate-900 mb-1 tracking-tighter whitespace-nowrap group-hover:opacity-80 transition-opacity">
+              WHERE SHOULD <span className="text-emerald-600">I LIVE?</span>
+            </h1>
+          </Link>
           <p className="text-[12px] sm:text-sm text-slate-400 font-medium tracking-tight">
             Discover your next city. Find the perfect place for your lifestyle.
           </p>
@@ -85,18 +87,18 @@ export default function Home() {
           </div>
 
           <div className="flex w-full sm:w-auto gap-1 p-1 bg-slate-200/50 rounded-xl h-[42px]">
-            {(['total', 'rent', 'safety', 'expat'] as SortOption[]).map((option) => (
+            {SORT_OPTIONS.map((option) => (
               <SortButton 
                 key={option}
                 active={sortBy === option} 
                 onClick={() => setSortBy(option)} 
-                label={option.charAt(0).toUpperCase() + option.slice(1)} 
+                label={option} 
               />
             ))}
           </div>
         </div>
 
-        {/* Active Filters Info */}
+        {/* Active Status Badge Info */}
         <div className="mb-4 flex flex-wrap items-center gap-2 px-1">
           <Badge icon={<ListFilter className="w-3 h-3" />} label={`${filteredAndSortedCities.length} Cities Found`} color="slate" />
           <Badge 
@@ -107,17 +109,25 @@ export default function Home() {
           {searchQuery && <Badge label={`Search: ${searchQuery}`} color="amber" />}
         </div>
 
-        {/* City Listing */}
+        {/* List of Cities */}
         <div className="grid gap-3 sm:gap-4">
           {filteredAndSortedCities.length > 0 ? (
             filteredAndSortedCities.map((city, index) => (
               <CityCard key={city.id} city={city} index={index} sortBy={sortBy} />
             ))
           ) : (
-            <EmptyState onClear={() => setSearchQuery('')} />
+            <div className="text-center py-20 bg-white rounded-3xl border-2 border-dashed border-slate-200">
+              <Search className="w-10 h-10 text-slate-200 mx-auto mb-4" />
+              <p className="text-slate-400 font-bold text-xl">No Cities Found</p>
+              <button 
+                onClick={() => setSearchQuery('')} 
+                className="mt-4 px-5 py-2.5 bg-slate-800 text-white rounded-xl text-sm font-bold hover:bg-emerald-600 transition-colors"
+              >
+                Clear Search
+              </button>
+            </div>
           )}
         </div>
-
       </div>
     </main>
   )
@@ -129,7 +139,7 @@ function CityCard({ city, index, sortBy }: { city: City, index: number, sortBy: 
   return (
     <div className="group bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 p-4 sm:p-6">
       <div className="flex flex-col">
-        {/* Header: Rank + Name + Score */}
+        {/* Card Header: Ranking, Name and Total Score */}
         <div className="flex items-center gap-3 sm:gap-6 mb-1.5 sm:mb-1">
           <div className="flex-shrink-0 w-8 h-8 sm:w-12 sm:h-12 bg-slate-800 text-white rounded-lg sm:rounded-xl flex items-center justify-center font-black text-sm sm:text-xl">
             {index + 1}
@@ -151,7 +161,7 @@ function CityCard({ city, index, sortBy }: { city: City, index: number, sortBy: 
           </div>
         </div>
 
-        {/* Body: Description + Detail Scores */}
+        {/* Card Body: Description and Detailed Stats */}
         <div className="pl-11 sm:pl-[72px]">
           <p className="text-slate-500 text-[13px] sm:text-base leading-relaxed mb-3 sm:mb-4 line-clamp-3 sm:line-clamp-none">
             {city.description}
@@ -176,7 +186,7 @@ function SortButton({ active, onClick, label }: { active: boolean, onClick: () =
         active ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'
       }`}
     >
-      {label}
+      {label.charAt(0).toUpperCase() + label.slice(1)}
     </button>
   )
 }
@@ -204,21 +214,6 @@ function ScoreItem({ icon, label, value, active }: { icon: React.ReactNode, labe
       <div className="flex flex-col min-w-0 items-center">
         <span className="text-[11px] sm:text-base font-black text-slate-900 leading-none">{value}</span>
       </div>
-    </div>
-  )
-}
-
-function EmptyState({ onClear }: { onClear: () => void }) {
-  return (
-    <div className="text-center py-20 bg-white rounded-3xl border-2 border-dashed border-slate-200">
-      <Search className="w-10 h-10 text-slate-200 mx-auto mb-4" />
-      <p className="text-slate-400 font-bold text-xl">No Cities Found</p>
-      <button 
-        onClick={onClear} 
-        className="mt-4 px-5 py-2.5 bg-slate-800 text-white rounded-xl text-sm font-bold hover:bg-emerald-600 transition-colors"
-      >
-        Clear Search
-      </button>
     </div>
   )
 }
