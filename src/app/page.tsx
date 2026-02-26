@@ -54,7 +54,7 @@ export default function Home() {
             <input 
               type="text"
               placeholder="Search city or country..."
-              className="w-full pl-9 pr-10 py-2 bg-white border border-slate-200 rounded-xl shadow-sm focus:ring-4 focus:ring-emerald-500/5 focus:border-emerald-500 outline-none transition-all text-slate-900 placeholder:text-slate-400 text-sm"
+              className="w-full pl-9 pr-10 bg-white border border-slate-200 rounded-xl shadow-sm focus:ring-4 focus:ring-emerald-500/5 focus:border-emerald-500 outline-none transition-all text-slate-900 placeholder:text-slate-400 text-sm h-[42px]"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -68,7 +68,7 @@ export default function Home() {
             )}
           </div>
 
-          <div className="flex w-full sm:w-auto gap-1 p-1 bg-slate-200/50 rounded-xl">
+          <div className="flex w-full sm:w-auto gap-1 p-1 bg-slate-200/50 rounded-xl h-[42px]">
             <SortButton active={sortBy === 'total'} onClick={() => setSortBy('total')} label="Overall" />
             <SortButton active={sortBy === 'rent'} onClick={() => setSortBy('rent')} label="Rent" />
             <SortButton active={sortBy === 'safety'} onClick={() => setSortBy('safety')} label="Safety" />
@@ -97,7 +97,7 @@ export default function Home() {
               >
                 <div className="flex flex-col">
                   {/* Card Header: Rank + Name + Score */}
-                  <div className="flex items-center gap-3 sm:gap-6 mb-3 sm:mb-4">
+                  <div className="flex items-center gap-3 sm:gap-6 mb-1.5 sm:mb-1">
                     <div className="flex-shrink-0 w-8 h-8 sm:w-12 sm:h-12 bg-slate-800 text-white rounded-lg sm:rounded-xl flex items-center justify-center font-black text-sm sm:text-xl">
                       {index + 1}
                     </div>
@@ -120,7 +120,7 @@ export default function Home() {
 
                   {/* Card Body: Description + Scores */}
                   <div className="pl-11 sm:pl-[72px]">
-                    <p className="text-slate-500 text-sm sm:text-base leading-relaxed mb-3 sm:mb-4 line-clamp-3 sm:line-clamp-none">{city.description}</p>
+                    <p className="text-slate-500 text-[13px] sm:text-base leading-relaxed mb-3 sm:mb-4 line-clamp-3 sm:line-clamp-none">{city.description}</p>
 
                     <div className="grid grid-cols-3 gap-2 sm:gap-4">
                       <ScoreItem icon={<CreditCard className="w-3 h-3 sm:w-4 sm:h-4 text-amber-400" />} label="Rent" value={`$${city.rentPrice1BR}`} active={sortBy === 'rent'} />
@@ -148,7 +148,7 @@ function SortButton({ active, onClick, label }: { active: boolean, onClick: () =
   return (
     <button
       onClick={onClick}
-      className={`flex-1 px-1 py-1.5 sm:px-6 sm:py-2.5 rounded-lg sm:rounded-xl text-[11px] sm:text-sm font-bold transition-all ${
+      className={`flex-1 px-1 sm:px-6 rounded-lg sm:rounded-xl text-[12px] sm:text-sm font-bold transition-all h-full ${
         active ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'
       }`}
     >
