@@ -55,11 +55,12 @@ export default function Home() {
             <Globe2 className="w-3 h-3" />
             Global Living Index
           </div>
-          <Link href="/" className="block group">
-            <h1 className="text-[clamp(1.5rem,8vw,2.25rem)] sm:text-4xl font-black text-slate-900 mb-1 tracking-tighter whitespace-nowrap group-hover:opacity-80 transition-opacity">
-              WHERE SHOULD <span className="text-emerald-600">I LIVE?</span>
-            </h1>
-          </Link>
+          <h1 
+            className="text-[clamp(1.5rem,8vw,2.25rem)] sm:text-4xl font-black text-slate-900 mb-1 tracking-tighter whitespace-nowrap cursor-pointer hover:opacity-80 transition-opacity"
+            onClick={() => window.location.href = '/city'}
+          >
+            WHERE SHOULD <span className="text-emerald-600">I LIVE?</span>
+          </h1>
           <p className="text-[12px] sm:text-sm text-slate-400 font-medium tracking-tight">
             Discover your next city. Find the perfect place for your lifestyle.
           </p>
