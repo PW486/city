@@ -43,7 +43,7 @@ export default function Home() {
   }, [searchQuery, sortBy])
 
   return (
-    <main className="min-h-screen bg-slate-50 py-8 px-3 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-slate-50 py-8 px-3 sm:px-6 lg:px-8 pt-[calc(env(safe-area-inset-top)+2rem)] sm:pt-12">
       <div className="max-w-4xl mx-auto">
         
         {/* Header Section */}
