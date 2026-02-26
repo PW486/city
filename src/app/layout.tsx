@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "WHERE SHOULD I LIVE?",
+    title: "Where2Live",
   },
   openGraph: {
     title: "WHERE SHOULD I LIVE?",
