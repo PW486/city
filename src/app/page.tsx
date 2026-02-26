@@ -43,8 +43,8 @@ export default function Home() {
   }, [searchQuery, sortBy])
 
   return (
-    <main className="min-h-screen bg-slate-50 py-8 px-3 sm:px-6 lg:px-8 pt-[calc(env(safe-area-inset-top)+2rem)] sm:pt-12">
-      <div className="max-w-4xl mx-auto">
+    <main className="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 pb-12 pt-[env(safe-area-inset-top,2rem)] sm:pt-16">
+      <div className="max-w-4xl mx-auto pt-8">
         
         {/* Header Section */}
         <header className="mb-8 text-center">
