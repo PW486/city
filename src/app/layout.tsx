@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Global Living Index" }],
   appleWebApp: {
     capable: true,
-    statusBarStyle: "default",
+    statusBarStyle: "black-translucent",
     title: "WHERE SHOULD I LIVE?",
   },
   openGraph: {
