@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -12,7 +12,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#f8fafc",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
+
+const baseUrl = "https://pw486.github.io/city/";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
   title: "WHERE SHOULD I LIVE?",
   description: "Discover your next city. Find the perfect place for your lifestyle based on rent, safety, and expat friendliness.",
   keywords: ["city ranking", "relocation", "digital nomad", "best places to live", "global living index"],
@@ -20,6 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "WHERE SHOULD I LIVE?",
     description: "Discover your next city. Find the perfect place for your lifestyle.",
+    url: baseUrl,
     siteName: "Global Living Index",
     locale: "en_US",
     type: "website",

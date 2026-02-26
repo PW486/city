@@ -4,14 +4,29 @@ import { useState, useMemo } from 'react'
 import citiesData from '@/data/cities.json'
 import { Shield, Users, Search, ListFilter, TrendingUp, Globe2, CreditCard, X } from 'lucide-react'
 
+// --- Types ---
+
 type SortOption = 'total' | 'rent' | 'safety' | 'expat'
+
+interface City {
+  id: string
+  name: string
+  country: string
+  description: string
+  totalScore: number
+  rentPrice1BR: number
+  safetyIndex: number
+  expatIndex: number
+}
+
+// --- Main Component ---
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('')
   const [sortBy, setSortBy] = useState<SortOption>('total')
 
   const filteredAndSortedCities = useMemo(() => {
-    let result = citiesData.filter(city => 
+    let result = (citiesData as City[]).filter(city => 
       city.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       city.country.toLowerCase().includes(searchQuery.toLowerCase())
     )
@@ -30,16 +45,14 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-slate-50 py-8 px-3 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
+        
         {/* Header Section */}
         <header className="mb-8 text-center">
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-[10px] sm:text-[11px] font-bold mb-4 tracking-wider uppercase shadow-sm">
             <Globe2 className="w-3 h-3" />
             Global Living Index
           </div>
-          <h1 
-            className="text-[clamp(1.5rem,8vw,2.25rem)] sm:text-4xl font-black text-slate-900 mb-1 tracking-tighter cursor-pointer hover:opacity-80 transition-opacity whitespace-nowrap"
-            onClick={() => window.location.href = '/city'}
-          >
+          <h1 className="text-[clamp(1.5rem,8vw,2.25rem)] sm:text-4xl font-black text-slate-900 mb-1 tracking-tighter whitespace-nowrap">
             WHERE SHOULD <span className="text-emerald-600">I LIVE?</span>
           </h1>
           <p className="text-[12px] sm:text-sm text-slate-400 font-medium tracking-tight">
@@ -47,7 +60,7 @@ export default function Home() {
           </p>
         </header>
 
-        {/* Controls Section */}
+        {/* Search & Sort Controls */}
         <div className="mb-6 flex flex-col sm:flex-row gap-3 items-center justify-between">
           <div className="relative w-full sm:max-w-xs group">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-emerald-500 transition-colors" />
@@ -69,14 +82,18 @@ export default function Home() {
           </div>
 
           <div className="flex w-full sm:w-auto gap-1 p-1 bg-slate-200/50 rounded-xl h-[42px]">
-            <SortButton active={sortBy === 'total'} onClick={() => setSortBy('total')} label="Overall" />
-            <SortButton active={sortBy === 'rent'} onClick={() => setSortBy('rent')} label="Rent" />
-            <SortButton active={sortBy === 'safety'} onClick={() => setSortBy('safety')} label="Safety" />
-            <SortButton active={sortBy === 'expat'} onClick={() => setSortBy('expat')} label="Expat" />
+            {(['total', 'rent', 'safety', 'expat'] as SortOption[]).map((option) => (
+              <SortButton 
+                key={option}
+                active={sortBy === option} 
+                onClick={() => setSortBy(option)} 
+                label={option.charAt(0).toUpperCase() + option.slice(1)} 
+              />
+            ))}
           </div>
         </div>
 
-        {/* Status Info */}
+        {/* Active Filters Info */}
         <div className="mb-4 flex flex-wrap items-center gap-2 px-1">
           <Badge icon={<ListFilter className="w-3 h-3" />} label={`${filteredAndSortedCities.length} Cities Found`} color="slate" />
           <Badge 
@@ -87,60 +104,64 @@ export default function Home() {
           {searchQuery && <Badge label={`Search: ${searchQuery}`} color="amber" />}
         </div>
 
-        {/* City Cards */}
+        {/* City Listing */}
         <div className="grid gap-3 sm:gap-4">
           {filteredAndSortedCities.length > 0 ? (
             filteredAndSortedCities.map((city, index) => (
-              <div 
-                key={city.id}
-                className="group bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 p-4 sm:p-6"
-              >
-                <div className="flex flex-col">
-                  {/* Card Header: Rank + Name + Score */}
-                  <div className="flex items-center gap-3 sm:gap-6 mb-1.5 sm:mb-1">
-                    <div className="flex-shrink-0 w-8 h-8 sm:w-12 sm:h-12 bg-slate-800 text-white rounded-lg sm:rounded-xl flex items-center justify-center font-black text-sm sm:text-xl">
-                      {index + 1}
-                    </div>
-
-                    <div className="flex-grow min-w-0">
-                      <div className="flex items-center justify-between gap-2">
-                        <div className="flex items-center gap-2 min-w-0">
-                          <h2 className="text-lg sm:text-2xl font-black text-slate-900 tracking-tight truncate leading-tight">{city.name}</h2>
-                          <span className="flex-shrink-0 text-[9px] sm:text-xs font-bold text-slate-500 bg-slate-100 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded">
-                            {city.country}
-                          </span>
-                        </div>
-                        <div className={`flex flex-col items-center justify-center rounded-lg sm:rounded-xl px-2 py-1 sm:px-4 sm:py-2 border transition-all ${sortBy === 'total' ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'bg-slate-50 border-slate-100 text-slate-900'}`}>
-                          <span className={`text-[7px] sm:text-[9px] uppercase font-black tracking-widest ${sortBy === 'total' ? 'text-emerald-600/60' : 'text-slate-400'}`}>Score</span>
-                          <span className="text-lg sm:text-2xl font-black leading-none">{city.totalScore}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Card Body: Description + Scores */}
-                  <div className="pl-11 sm:pl-[72px]">
-                    <p className="text-slate-500 text-[13px] sm:text-base leading-relaxed mb-3 sm:mb-4 line-clamp-3 sm:line-clamp-none">{city.description}</p>
-
-                    <div className="grid grid-cols-3 gap-2 sm:gap-4">
-                      <ScoreItem icon={<CreditCard className="w-3 h-3 sm:w-4 sm:h-4 text-amber-400" />} label="Rent" value={`$${city.rentPrice1BR}`} active={sortBy === 'rent'} />
-                      <ScoreItem icon={<Shield className="w-3 h-3 sm:w-4 sm:h-4 text-sky-400" />} label="Safety" value={city.safetyIndex} active={sortBy === 'safety'} />
-                      <ScoreItem icon={<Users className="w-3 h-3 sm:w-4 sm:h-4 text-indigo-400" />} label="Expat" value={city.expatIndex} active={sortBy === 'expat'} />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <CityCard key={city.id} city={city} index={index} sortBy={sortBy} />
             ))
           ) : (
-            <div className="text-center py-20 bg-white rounded-3xl border-2 border-dashed border-slate-200">
-              <Search className="w-10 h-10 text-slate-200 mx-auto mb-4" />
-              <p className="text-slate-400 font-bold text-xl">No Cities Found</p>
-              <button onClick={() => setSearchQuery('')} className="mt-4 px-5 py-2.5 bg-slate-800 text-white rounded-xl text-sm font-bold hover:bg-emerald-600 transition-colors">Clear Search</button>
-            </div>
+            <EmptyState onClear={() => setSearchQuery('')} />
           )}
         </div>
+
       </div>
     </main>
+  )
+}
+
+// --- Sub-Components ---
+
+function CityCard({ city, index, sortBy }: { city: City, index: number, sortBy: SortOption }) {
+  return (
+    <div className="group bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 p-4 sm:p-6">
+      <div className="flex flex-col">
+        {/* Header: Rank + Name + Score */}
+        <div className="flex items-center gap-3 sm:gap-6 mb-1.5 sm:mb-1">
+          <div className="flex-shrink-0 w-8 h-8 sm:w-12 sm:h-12 bg-slate-800 text-white rounded-lg sm:rounded-xl flex items-center justify-center font-black text-sm sm:text-xl">
+            {index + 1}
+          </div>
+
+          <div className="flex-grow min-w-0">
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center gap-2 min-w-0">
+                <h2 className="text-lg sm:text-2xl font-black text-slate-900 tracking-tight truncate leading-tight">{city.name}</h2>
+                <span className="flex-shrink-0 text-[9px] sm:text-xs font-bold text-slate-500 bg-slate-100 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded">
+                  {city.country}
+                </span>
+              </div>
+              <div className={`flex flex-col items-center justify-center rounded-lg sm:rounded-xl px-2 py-1 sm:px-4 sm:py-2 border transition-all ${sortBy === 'total' ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'bg-slate-50 border-slate-100 text-slate-900'}`}>
+                <span className={`text-[7px] sm:text-[9px] uppercase font-black tracking-widest ${sortBy === 'total' ? 'text-emerald-600/60' : 'text-slate-400'}`}>Score</span>
+                <span className="text-lg sm:text-2xl font-black leading-none">{city.totalScore}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Body: Description + Detail Scores */}
+        <div className="pl-11 sm:pl-[72px]">
+          <p className="text-slate-500 text-[13px] sm:text-base leading-relaxed mb-3 sm:mb-4 line-clamp-3 sm:line-clamp-none">
+            {city.description}
+          </p>
+
+          <div className="grid grid-cols-3 gap-2 sm:gap-4">
+            <ScoreItem icon={<CreditCard className="w-3 h-3 sm:w-4 sm:h-4 text-amber-400" />} label="Rent" value={`$${city.rentPrice1BR}`} active={sortBy === 'rent'} />
+            <ScoreItem icon={<Shield className="w-3 h-3 sm:w-4 sm:h-4 text-sky-400" />} label="Safety" value={city.safetyIndex} active={sortBy === 'safety'} />
+            <ScoreItem icon={<Users className="w-3 h-3 sm:w-4 sm:h-4 text-indigo-400" />} label="Expat" value={city.expatIndex} active={sortBy === 'expat'} />
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -184,3 +205,17 @@ function ScoreItem({ icon, label, value, active }: { icon: React.ReactNode, labe
   )
 }
 
+function EmptyState({ onClear }: { onClear: () => void }) {
+  return (
+    <div className="text-center py-20 bg-white rounded-3xl border-2 border-dashed border-slate-200">
+      <Search className="w-10 h-10 text-slate-200 mx-auto mb-4" />
+      <p className="text-slate-400 font-bold text-xl">No Cities Found</p>
+      <button 
+        onClick={onClear} 
+        className="mt-4 px-5 py-2.5 bg-slate-800 text-white rounded-xl text-sm font-bold hover:bg-emerald-600 transition-colors"
+      >
+        Clear Search
+      </button>
+    </div>
+  )
+}
