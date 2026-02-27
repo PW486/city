@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     siteName: "Global Living Index",
     images: [
       {
-        url: "https://pw486.github.io/city/opengraph-image.png",
+        url: "opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "WHERE SHOULD I LIVE? - Global Living Index",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "WHERE SHOULD I LIVE?",
     description: "Discover your next city. Find the perfect place for your lifestyle.",
-    images: ["https://pw486.github.io/city/opengraph-image.png"],
+    images: ["opengraph-image.png"],
   },
 };
 
