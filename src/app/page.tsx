@@ -46,12 +46,12 @@ export default function Home() {
   }, [searchQuery, sortBy])
 
   return (
-    <main className="min-h-screen bg-slate-50 px-4 sm:px-6 lg:px-8 pb-12 pt-[env(safe-area-inset-top)]">
-      <div className="max-w-4xl mx-auto pt-8 sm:pt-16">
+    <main className="min-h-screen bg-slate-50 pb-12 pt-[env(safe-area-inset-top)]">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 sm:pt-10">
         
         {/* Header: Global Living Index Title */}
-        <header className="mb-8 text-center">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-[10px] sm:text-[11px] font-bold mb-4 tracking-wider uppercase shadow-sm">
+        <header className="mb-6 text-center">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-[10px] sm:text-[11px] font-bold mb-3 tracking-wider uppercase shadow-sm">
             <Globe2 className="w-3 h-3" />
             Global Living Index
           </div>
