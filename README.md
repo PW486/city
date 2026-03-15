@@ -1,6 +1,6 @@
 # 📍 WHERE SHOULD I LIVE?
 
-A web-based platform to compare and explore major cities worldwide based on cost of living, safety, and expat-friendliness.
+Discover your next city. Find the perfect place for your lifestyle based on rent, safety, and expat friendliness.
 
 ## Key Features
 - 🌍 **Global City Database**: Access scores for various metrics (Total Score, Rent, Safety, Expat) across major cities.

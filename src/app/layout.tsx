@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "WHERE SHOULD I LIVE?",
-    description: "Discover your next city. Find the perfect place for your lifestyle.",
+    description: "Discover your next city. Find the perfect place for your lifestyle based on rent, safety, and expat friendliness.",
     url: baseUrl,
     siteName: "Global Living Index",
     images: [
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "WHERE SHOULD I LIVE?",
-    description: "Discover your next city. Find the perfect place for your lifestyle.",
+    description: "Discover your next city. Find the perfect place for your lifestyle based on rent, safety, and expat friendliness.",
     images: ["opengraph-image.png"],
   },
 };

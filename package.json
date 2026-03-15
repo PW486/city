@@ -1,7 +1,9 @@
 {
   "name": "city",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "author": "PW486",
+  "description": "Discover your next city. Find the perfect place for your lifestyle based on rent, safety, and expat friendliness.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
