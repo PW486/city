@@ -51,7 +51,7 @@ export default function Home() {
         
         {/* Header: Global Living Index Title */}
         <header className="mb-6 text-center">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm bg-slate-800 text-white text-[10px] sm:text-[11px] font-bold mb-3 tracking-wide uppercase shadow-sm">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm bg-white text-slate-500 text-[10px] sm:text-[11px] font-bold mb-3 tracking-wide uppercase shadow-sm border border-slate-200">
             <Globe2 className="w-3 h-3" />
             GLOBAL LIVING INDEX
           </div>
